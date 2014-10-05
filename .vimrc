@@ -13,9 +13,7 @@ syntax on
 set number
 set showmatch
 
-""""""""""""""""""""""""""""""
 "全角スペースを表示
-""""""""""""""""""""""""""""""
 "コメント以外で全角スペースを指定しているので scriptencodingと、
 "このファイルのエンコードが一致するよう注意！
 "全角スペースが強調表示されない場合、ここでscriptencodingを指定すると良い。
@@ -39,19 +37,5 @@ if has('syntax')
 endif
 
 "タブ、空白、改行の可視化
-set list
-set listchars=tab:>.,trail:_,eol:?,extends:>,precedes:<,nbsp:%
-
-"全角スペースをハイライト表示
-function! ZenkakuSpace()
-    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
-endfunction
-   
-if has('syntax')
-    augroup ZenkakuSpace
-        autocmd!
-        autocmd ColorScheme       * call ZenkakuSpace()
-        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-    augroup END
-    call ZenkakuSpace()
-endif
+"set list
+"set listchars=tab:>.,trail:_,eol:?,extends:>,precedes:<,nbsp:%
