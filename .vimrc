@@ -1,25 +1,25 @@
-" $BJ8;z%3!<%I$N@_Dj(B
+" 文字コードの設定
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
-" $B%?%VI}$N@_Dj(B
+" タブ幅の設定
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set hlsearch
 
-"#####$BI=<(@_Dj(B#####
+"#####表示設定#####
 syntax on
 set number
 set showmatch
 
-"$BA43Q%9%Z!<%9$rI=<((B
-"$B%3%a%s%H0J30$GA43Q%9%Z!<%9$r;XDj$7$F$$$k$N$G(B scriptencoding$B$H!"(B
-"$B$3$N%U%!%$%k$N%(%s%3!<%I$,0lCW$9$k$h$&Cm0U!*(B
-"$BA43Q%9%Z!<%9$,6/D4I=<($5$l$J$$>l9g!"$3$3$G(Bscriptencoding$B$r;XDj$9$k$HNI$$!#(B
+"全角スペースを表示
+"コメント以外で全角スペースを指定しているので scriptencodingと、
+"このファイルのエンコードが一致するよう注意！
+"全角スペースが強調表示されない場合、ここでscriptencodingを指定すると良い。
 "scriptencoding cp932
 
-"$B%G%U%)%k%H$N(BZenkakuSpace$B$rDj5A(B
+"デフォルトのZenkakuSpaceを定義
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
 endfunction
@@ -27,15 +27,15 @@ endfunction
 if has('syntax')
   augroup ZenkakuSpace
     autocmd!
-    " ZenkakuSpace$B$r%+%i!<%U%!%$%k$G@_Dj$9$k$J$i<!$N9T$O:o=|(B
+    " ZenkakuSpaceをカラーファイルで設定するなら次の行は削除
     autocmd ColorScheme       * call ZenkakuSpace()
-    " $BA43Q%9%Z!<%9$N%O%$%i%$%H;XDj(B
-    autocmd VimEnter,WinEnter * match ZenkakuSpace /$B!!(B/
+    " 全角スペースのハイライト指定
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
     autocmd VimEnter,WinEnter * match ZenkakuSpace '\%u3000'
   augroup END
   call ZenkakuSpace()
 endif
 
-"$B%?%V!"6uGr!"2~9T$N2D;k2=(B
+"タブ、空白、改行の可視化
 "set list
 "set listchars=tab:>.,trail:_,eol:?,extends:>,precedes:<,nbsp:%
